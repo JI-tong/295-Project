@@ -14,7 +14,7 @@
 # ==============================================================================
 
 r"""Tool to export an object detection model for inference.
-python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_inception_v2_pets.config --trained_checkpoint_prefix training/model.ckpt-100 --output_directory inference_graph
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_inception_v2_pets.config --trained_checkpoint_prefix training/model.ckpt-1228 --output_directory inference_graph
 
 """
 import tensorflow as tf
