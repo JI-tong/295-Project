@@ -32,10 +32,10 @@ import os
 import subprocess
 import tensorflow as tf
 
-from object_detection import trainer
 from object_detection.builders import dataset_builder
 from object_detection.builders import graph_rewriter_builder
 from object_detection.builders import model_builder
+from object_detection.legacy import trainer
 from object_detection.utils import config_util
 
 tf.logging.set_verbosity(tf.logging.INFO)
