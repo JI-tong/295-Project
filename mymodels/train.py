@@ -40,6 +40,15 @@ from object_detection.utils import config_util
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
+def del_all_flags(FLAGS):
+    flags_dict = FLAGS._flags()    
+    keys_list = [keys for keys in flags_dict]    
+    for keys in keys_list:    
+      FLAGS.__delattr__(keys)
+
+del_all_flags(tf.flags.FLAGS)
+
+
 flags = tf.app.flags
 flags.DEFINE_string('master', '', 'Name of the TensorFlow master to use.')
 flags.DEFINE_integer('task', 0, 'task id')
