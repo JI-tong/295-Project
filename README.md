@@ -15,8 +15,7 @@ python generate_tfrecord.py --csv_input=images/train_labels.csv --image_dir=imag
 python generate_tfrecord.py --csv_input=images/test_labels.csv  --image_dir=images/test --output_path=test.record
 ```
 then:
-1) do:
-suppose '~/Path' is the path to access the tensorflow obejct detection API
+1) suppose '~/Path' is the path to access the tensorflow obejct detection API, do:
 ```
 export PYTHONPATH=$PYTHONPATH: ~/Path/models/research: ~/Path/models/research/slim
 ```
