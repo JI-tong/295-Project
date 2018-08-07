@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 
 '''
 run the retinanet training:
-./keras_retinanet/bin/train.py csv ../295-Project/retina_net_data/images/train_labels.csv ../295-Project/retina_net_data/images/class_map.csv 
+./keras_retinanet/bin/train.py csv ../295-Project/retina_net_data/images/train/train_labels.csv ../295-Project/retina_net_data/images/class_map.csv 
 '''
 def xml_to_csv(path):
     xml_list = []
