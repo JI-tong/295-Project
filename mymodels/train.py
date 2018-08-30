@@ -18,10 +18,10 @@ r"""Training executable for detection models.
 This executable is used to train DetectionModels. To run this file:
 1) do:
 '~/Documents/GitHub/models/research' is the path to access the tensorflow obejct detection API
-export PYTHONPATH=$PYTHONPATH:../../models/research:../../models/research/slim
+export PYTHONPATH=$PYTHONPATH:~/Documents/GitHub/models/research:~/Documents/GitHub/models/research/slim
 
 2) do:
-python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
+python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_pets.config
 
 
 """
