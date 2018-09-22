@@ -1,3 +1,4 @@
 *.mp4
 ssd_mobilenet_V1_coco_11_06_2017
 *.pyc
+*.avi

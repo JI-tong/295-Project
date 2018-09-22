@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import glob
 import time
 import sys
+import cv2
 from moviepy.editor import VideoFileClip
 from collections import deque
 from sklearn.utils.linear_assignment_ import linear_assignment
@@ -213,11 +214,42 @@ if __name__ == "__main__":
            
     else: # test on a video file.
         
+        '''
         start=time.time()
         output = sys.argv[2]
         clip1 = VideoFileClip(sys.argv[1])#.subclip(4,49) # The first 8 seconds doesn't have any cars...
         clip = clip1.fl_image(pipeline)
+        clip.preview()
         clip.write_videofile(output, audio=False)
         end  = time.time()
         
         print(round(end-start, 2), 'Seconds to finish')
+        '''
+        # Open video file
+        video = cv2.VideoCapture(sys.argv[1])
+        frame_width = int( video.get(cv2.CAP_PROP_FRAME_WIDTH))
+        frame_height =int( video.get( cv2.CAP_PROP_FRAME_HEIGHT))
+        fourcc = cv2.VideoWriter_fourcc(*'MPEG')
+        outVideo = cv2.VideoWriter(sys.argv[2], fourcc, 20.0, (frame_width, frame_height))
+
+        while(video.isOpened()):
+
+            # Acquire frame and expand frame dimensions to have shape: [1, None, None, 3]
+            # i.e. a single-column array, where each item in the column has the pixel RGB value
+            ret, frame = video.read()
+            if ret == True:
+                frame_expanded = np.expand_dims(frame, axis=0)
+                # All the results have been drawn on the frame, so it's time to display it.
+                res = pipeline(frame)
+                outVideo.write(res)
+                cv2.imshow('Object tracker', res)
+
+                # Press 'q' to quit
+                if cv2.waitKey(1) == ord('q'):
+                    break
+            else:
+                break
+
+        # Clean up
+        video.release()
+        cv2.destroyAllWindows()
