@@ -230,7 +230,8 @@ if __name__ == "__main__":
         frame_width = int( video.get(cv2.CAP_PROP_FRAME_WIDTH))
         frame_height =int( video.get( cv2.CAP_PROP_FRAME_HEIGHT))
         fourcc = cv2.VideoWriter_fourcc(*'MPEG')
-        outVideo = cv2.VideoWriter(sys.argv[2], fourcc, 20.0, (frame_width, frame_height))
+        name = sys.argv[1].split(".")[0]
+        outVideo = cv2.VideoWriter(name + ".avi", fourcc, 20.0, (frame_width, frame_height))
 
         while(video.isOpened()):
 
