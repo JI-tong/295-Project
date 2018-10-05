@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 import xml.etree.ElementTree as ET
 
-
+'''
 def xml_to_csv(path):
     xml_list = []
     for xml_file in glob.glob(path + '/*.xml'):
@@ -23,10 +23,34 @@ def xml_to_csv(path):
     column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
     xml_df = pd.DataFrame(xml_list, columns=column_name)
     return xml_df
+    '''
+def xml_to_csv(path):
+    xml_list = []
+    for xml_file in glob.glob(path + '/*.xml'):
+        tree = ET.parse(xml_file)
+        root = tree.getroot()
+        folder_name = root.attrib['name']
+        for frame in root.iter('frame'):
+
+            for target in frame.find('target_list'):
+                num = frame.attrib['num'].zfill(5)
+                file_name = folder_name + '/img' + num + '.jpg'
+                ymax = int(round(float(target.find('box').attrib['top'])))
+                xmin = int(round(float(target.find('box').attrib['left'])))
+                ymin = ymax - int(round(float(target.find('box').attrib['height'])))
+                xmax = int(round(float(target.find('box').attrib['width']))) + xmin
+                c_type = target.find('attribute').attrib['vehicle_type']
+                value = (file_name, '960', '540', c_type, xmin, ymin, xmax, ymax)
+                xml_list.append(value)
+
+        print (folder_name + " done")
+    column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
+    xml_df = pd.DataFrame(xml_list, columns=column_name)
+    return xml_df
 
 
 def main():
-    for folder in ['train','test']:
+    for folder in ['test','train']:
         image_path = os.path.join(os.getcwd(), ('images/' + folder))
         xml_df = xml_to_csv(image_path)
         xml_df.to_csv(('data/' + folder + '_labels.csv'), index=None)

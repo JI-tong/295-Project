@@ -2,10 +2,10 @@
 Usage:
   # From tensorflow/models/
   # Create train data:
-  python generate_tfrecord.py --csv_input=images/train_labels.csv --image_dir=images/train --output_path=data/train.record
+  python generate_tfrecord.py --csv_input=data/train_labels.csv --image_dir=data/train --output_path=data/train.record
 
   # Create test data:
-  python generate_tfrecord.py --csv_input=images/test_labels.csv  --image_dir=images/test --output_path=data/test.record
+  python generate_tfrecord.py --csv_input=data/test_labels.csv  --image_dir=data/test --output_path=data/test.record
 """
 from __future__ import division
 from __future__ import print_function
@@ -30,20 +30,14 @@ FLAGS = flags.FLAGS
 def class_text_to_int(row_label):
     if row_label == 'cars':
         return 1
-        '''
-    elif row_label == 'ten':
+    elif row_label == 'bus':
         return 2
-    elif row_label == 'jack':
+    elif row_label == 'van':
         return 3
-    elif row_label == 'queen':
+    elif row_label == 'others':
         return 4
-    elif row_label == 'king':
-        return 5
-    elif row_label == 'ace':
-        return 6
     else:
         None
-        '''
 
 
 def split(df, group):

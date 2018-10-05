@@ -1,29 +1,16 @@
 item {
   id: 1
-  name: 'nine'
+  name: 'cars'
 }
-
 item {
   id: 2
-  name: 'ten'
+  name: 'bus'
 }
-
 item {
   id: 3
-  name: 'jack'
+  name: 'van'
 }
-
 item {
   id: 4
-  name: 'queen'
-}
-
-item {
-  id: 5
-  name: 'king'
-}
-
-item {
-  id: 6
-  name: 'ace'
+  name: 'others'
 }
