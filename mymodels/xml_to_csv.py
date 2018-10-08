@@ -35,9 +35,9 @@ def xml_to_csv(path):
             for target in frame.find('target_list'):
                 num = frame.attrib['num'].zfill(5)
                 file_name = folder_name + '/img' + num + '.jpg'
-                ymax = int(round(float(target.find('box').attrib['top'])))
+                ymin = int(round(float(target.find('box').attrib['top'])))
                 xmin = int(round(float(target.find('box').attrib['left'])))
-                ymin = ymax - int(round(float(target.find('box').attrib['height'])))
+                ymax = int(round(float(target.find('box').attrib['height']))) + ymin
                 xmax = int(round(float(target.find('box').attrib['width']))) + xmin
                 c_type = target.find('attribute').attrib['vehicle_type']
                 value = (file_name, '960', '540', c_type, xmin, ymin, xmax, ymax)
