@@ -8,3 +8,11 @@ python train.py \
 --logtostderr   \
 --train_dir=/Users/eric_tong/Documents/GitHub/295-Project/mymodels/training/outputRCNN  \
 --pipeline_config_path=/Users/eric_tong/Documents/GitHub/295-Project/mymodels/training/faster_rcnn_inception_v2_coco.config
+
+
+python model_main.py \
+--pipeline_config_path=/Users/eric_tong/Documents/GitHub/295-Project/mymodels/training/ssd_mobilenet_v1_coco.config \
+--model_dir=/Users/eric_tong/Documents/GitHub/295-Project/mymodels/training/outputSSD \
+--num_train_steps=TRAINING_STEP_COUNT \
+--alsologtostderr \
+--sample_1_of_n_eval_examples=1
