@@ -1,0 +1,10 @@
+python train.py \
+--logtostderr   \
+--train_dir=/Users/eric_tong/Documents/GitHub/295-Project/mymodels/training/outputSSD  \
+--pipeline_config_path=/Users/eric_tong/Documents/GitHub/295-Project/mymodels/training/ssd_mobilenet_v1_coco.config
+
+
+python train.py \
+--logtostderr   \
+--train_dir=/Users/eric_tong/Documents/GitHub/295-Project/mymodels/training/outputRCNN  \
+--pipeline_config_path=/Users/eric_tong/Documents/GitHub/295-Project/mymodels/training/faster_rcnn_inception_v2_coco.config
