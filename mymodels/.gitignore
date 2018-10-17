@@ -3,3 +3,5 @@
 *.xml
 *.mp4
 *.csv
+training/
+data/

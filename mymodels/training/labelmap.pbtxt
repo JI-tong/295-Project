@@ -1,6 +1,6 @@
 item {
   id: 1
-  name: 'cars'
+  name: 'car'
 }
 item {
   id: 2
