@@ -31,7 +31,7 @@ from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
 
 # Name of the directory containing the object detection module we're using
-MODEL_NAME = 'inference_graph'
+MODEL_NAME = 'data/inference'
 VIDEO_NAME = 'Loc3_2-002.mp4'
 
 # Grab path to current working directory
@@ -42,7 +42,7 @@ CWD_PATH = os.getcwd()
 PATH_TO_CKPT = os.path.join(CWD_PATH,MODEL_NAME,'frozen_inference_graph.pb')
 
 # Path to label map file
-PATH_TO_LABELS = os.path.join(CWD_PATH,'training','object-detection.pbtxt')
+PATH_TO_LABELS = os.path.join(CWD_PATH,'data','labelmap.pbtxt')
 
 # Path to video
 PATH_TO_VIDEO = os.path.join(CWD_PATH,VIDEO_NAME)

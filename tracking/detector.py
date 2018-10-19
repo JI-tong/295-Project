@@ -25,7 +25,7 @@ class CarDetector(object):
         #Tensorflow localization/detection model
         # Single-shot-dectection with mobile net architecture trained on COCO
         # dataset
-        detect_model_name = 'ssd_mobilenet_v1_coco_11_06_2017'
+        detect_model_name = 'trainedModel'
         
         PATH_TO_CKPT = detect_model_name + '/frozen_inference_graph.pb'
         
