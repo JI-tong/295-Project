@@ -4,14 +4,12 @@ import pandas as pd
 def main():
     class_list = {
         'car' : '1',
-        'van' : '2',
-        'bus' : '3',
+        'bus' : '2',
+        'van' : '3',
         'others' : '4',
     }
-
-
     column_name = ['class_name','id']
-    classes = ['nine','ten','jack','queen','king','ace']
+    classes = ['car','bus','van','others']
     class_list = []
     for (i,item) in enumerate(classes):
         value = (item, str(i + 1))

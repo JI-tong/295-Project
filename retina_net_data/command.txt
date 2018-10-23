@@ -1,0 +1,1 @@
+./keras_retinanet/bin/train.py csv /Users/eric_tong/Documents/GitHub/295-Project/retina_net_data/images/train_labels.csv /Users/eric_tong/Documents/GitHub/295-Project/retina_net_data/images/class_map.csv 
