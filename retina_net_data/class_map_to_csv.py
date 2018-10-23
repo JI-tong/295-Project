@@ -3,12 +3,10 @@ import pandas as pd
 
 def main():
     class_list = {
-        'nine' : '1',
-        'ten' : '2',
-        'jack' : '3',
-        'queen' : '4',
-        'king' : '5',
-        'ace' : '6'
+        'car' : '1',
+        'van' : '2',
+        'bus' : '3',
+        'others' : '4',
     }
 
 
