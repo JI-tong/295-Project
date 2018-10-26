@@ -39,6 +39,10 @@ def xml_to_csv(path):
                 xmin = int(round(float(target.find('box').attrib['left'])))
                 ymax = int(round(float(target.find('box').attrib['height']))) + ymin
                 xmax = int(round(float(target.find('box').attrib['width']))) + xmin
+                if (xmax > 960):
+                    xmax = 960
+                if (ymax > 540):
+                    ymax = 540
                 c_type = target.find('attribute').attrib['vehicle_type']
                 value = (file_name, '960', '540', c_type, xmin, ymin, xmax, ymax)
                 xml_list.append(value)

@@ -2,3 +2,4 @@
 *.xml
 images/
 data/
+.vscode
