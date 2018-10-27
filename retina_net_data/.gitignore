@@ -6,3 +6,4 @@ data/
 *.png
 .ipynb*
 trainedModel/
+*.mp4
