@@ -7,3 +7,5 @@ training/
 data/
 images/
 .vscode
+*.h5
+.ipynb*

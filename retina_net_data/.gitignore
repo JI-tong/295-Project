@@ -3,3 +3,6 @@
 images/
 data/
 .vscode
+*.png
+.ipynb*
+trainedModel/

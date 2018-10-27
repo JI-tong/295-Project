@@ -1,1 +1,6 @@
 ./keras_retinanet/bin/train.py csv /Users/eric_tong/Documents/GitHub/295-Project/retina_net_data/images/train_labels.csv /Users/eric_tong/Documents/GitHub/295-Project/retina_net_data/images/class_map.csv 
+
+
+#test
+go to keras-retinanet bin folder, do:
+python3 convert_model.py ../../../295-Project/retina_net_data/trainedModel/resnet50_csv_49.h5 ../../../295-Project/retina_net_data/trainedModel/49.h5
