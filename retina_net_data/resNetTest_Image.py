@@ -33,7 +33,7 @@ keras.backend.tensorflow_backend.set_session(get_session())
 
 
 # adjust this to point to your downloaded/trained model
-model_path = os.path.join('.', 'trainedModel', '49.h5')
+model_path = os.path.join('.', 'trainedModel', '50.h5')
 
 # load retinanet model
 model = models.load_model(model_path, backbone_name='resnet50')
@@ -44,7 +44,7 @@ labels_to_names = {1: 'car', 2: 'bus', 3: 'van', 4: 'others'}
 #--------------------------predict on image------------------------------------------------------------------------
 
 # load image
-image = read_image_bgr('images/test/MVI_63553/img00004.jpg')
+image = read_image_bgr('img00106.jpg')
 #image = read_image_bgr('cameraimg.png')
 
 # copy to draw on

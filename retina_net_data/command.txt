@@ -3,4 +3,4 @@
 
 #test
 go to keras-retinanet bin folder, do:
-python3 convert_model.py ../../../295-Project/retina_net_data/trainedModel/resnet50_csv_49.h5 ../../../295-Project/retina_net_data/trainedModel/49.h5
+python3 convert_model.py /home/student/Documents/295-B-Ji/resnet/295-Project/retina_net_data/trainedModel/resnet50_csv_50.h5 /home/student/Documents/295-B-Ji/resnet/295-Project/retina_net_data/trainedModel/50.h5

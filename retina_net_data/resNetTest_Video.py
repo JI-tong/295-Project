@@ -34,7 +34,7 @@ keras.backend.tensorflow_backend.set_session(get_session())
 
 
 # adjust this to point to your downloaded/trained model
-model_path = os.path.join('.', 'trainedModel', '49.h5')
+model_path = os.path.join('.', 'trainedModel', '50.h5')
 
 # load retinanet model
 model = models.load_model(model_path, backbone_name='resnet50')
@@ -45,6 +45,7 @@ labels_to_names = {1: 'car', 2: 'bus', 3: 'van', 4: 'others'}
 #--------------------------predict on image------------------------------------------------------------------------
 
 cap = cv2.VideoCapture('0120180801130639.mp4')
+#cap = cv2.VideoCapture('sub-1504614469486.mp4')
 
 counter = 0
 sum_time=0
