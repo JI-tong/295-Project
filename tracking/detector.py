@@ -76,19 +76,10 @@ class CarDetector(object):
             list of bounding boxes: coordinates [y_up, x_left, y_down, x_right]
 
         """
-        category_index={1: {'id': 1, 'name': u'person'},
-                        2: {'id': 2, 'name': u'bicycle'},
-                        3: {'id': 3, 'name': u'car'},
-                        4: {'id': 4, 'name': u'motorcycle'},
-                        5: {'id': 5, 'name': u'airplane'},
-                        6: {'id': 6, 'name': u'bus'},
-                        7: {'id': 7, 'name': u'train'},
-                        8: {'id': 8, 'name': u'truck'},
-                        9: {'id': 9, 'name': u'boat'},
-                        10: {'id': 10, 'name': u'traffic light'},
-                        11: {'id': 11, 'name': u'fire hydrant'},
-                        13: {'id': 13, 'name': u'stop sign'},
-                        14: {'id': 14, 'name': u'parking meter'}}  
+        category_index={1: {'id': 1, 'name': u'car'},
+                        2: {'id': 2, 'name': u'van'},
+                        3: {'id': 3, 'name': u'bus'},
+                        4: {'id': 4, 'name': u'others'}}  
         
         with self.detection_graph.as_default():
               image_expanded = np.expand_dims(image, axis=0)
