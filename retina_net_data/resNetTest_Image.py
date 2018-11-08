@@ -44,7 +44,7 @@ labels_to_names = {1: 'car', 2: 'bus', 3: 'van', 4: 'others'}
 #--------------------------predict on image------------------------------------------------------------------------
 
 # load image
-image = read_image_bgr('img00106.jpg')
+image = read_image_bgr('cameraimg.png')
 #image = read_image_bgr('cameraimg.png')
 
 # copy to draw on
@@ -66,7 +66,7 @@ boxes /= scale
 # visualize detections
 for box, score, label in zip(boxes[0], scores[0], labels[0]):
     # scores are sorted so we can break
-    if score < 0.5:
+    if score < 0.3:
         break
         
     color = label_color(label)

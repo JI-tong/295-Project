@@ -4,3 +4,7 @@
 #test
 go to keras-retinanet bin folder, do:
 python3 convert_model.py /home/student/Documents/295-B-Ji/resnet/295-Project/retina_net_data/trainedModel/resnet50_csv_50.h5 /home/student/Documents/295-B-Ji/resnet/295-Project/retina_net_data/trainedModel/50.h5
+
+
+#evaluate
+python3 evaluate.py csv '/Users/eric_tong/Documents/GitHub/295-Project/retina_net_data/images/test-image-SJSU-camera_labels.csv' '/Users/eric_tong/Documents/GitHub/295-Project/retina_net_data/images/class_map.csv' '/Users/eric_tong/Documents/GitHub/295-Project/retina_net_data/trainedModel/50.h5' --save-path='/Users/eric_tong/Documents/GitHub/295-Project/retina_net_data/trainedModel/image-SJSU'

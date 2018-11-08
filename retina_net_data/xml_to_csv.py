@@ -3,27 +3,29 @@ import glob
 import pandas as pd
 import xml.etree.ElementTree as ET
 
-'''
+
 def xml_to_csv(path):
     xml_list = []
-    for xml_file in glob.glob(path + '/*.xml'):
+    for xml_file in glob.glob(path + '/outputs/*.xml'):
         tree = ET.parse(xml_file)
         root = tree.getroot()
-        for member in root.findall('object'):
-            value = (root.find('filename').text,
-                     int(root.find('size')[0].text),
-                     int(root.find('size')[1].text),
-                     member[0].text,
-                     int(member[4][0].text),
-                     int(member[4][1].text),
-                     int(member[4][2].text),
-                     int(member[4][3].text)
-                     )
+        for member in root.iter('item'):
+            print('1')
+            value = ('test-image-SJSU-camera/' + root.find('path').text.split('/')[-1],
+                    int(member.find('bndbox')[0].text),
+                    int(member.find('bndbox')[1].text),
+                    int(member.find('bndbox')[2].text) + 1,
+                    int(member.find('bndbox')[3].text) + 1,
+                    member.find('name').text.strip()
+                    )
+            print(value)
             xml_list.append(value)
-    column_name = ['filename', 'width', 'height', 'class', 'xmin', 'ymin', 'xmax', 'ymax']
+    column_name = ['filename', 'xmin', 'ymin', 'xmax', 'ymax', 'class']
     xml_df = pd.DataFrame(xml_list, columns=column_name)
     return xml_df
-    '''
+
+
+'''
 def xml_to_csv(path, folder):
     xml_list = []
     for xml_file in glob.glob(path + '/*.xml'):
@@ -47,12 +49,13 @@ def xml_to_csv(path, folder):
     column_name = ['filename', 'xmin', 'ymin', 'xmax', 'ymax', 'class']
     xml_df = pd.DataFrame(xml_list, columns=None)
     return xml_df
-
+'''
 
 def main():
-    for folder in ['test','train']:
+    #for folder in ['test','train']:
+    for folder in ['test-image-SJSU-camera']:
         image_path = os.path.join(os.getcwd(), ('images/' + folder))
-        xml_df = xml_to_csv(image_path, folder)
+        xml_df = xml_to_csv(image_path)
         xml_df.to_csv(('images/' + folder + '_labels.csv'), index=None)
         print('Successfully converted xml to csv.')
 
