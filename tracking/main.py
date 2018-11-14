@@ -35,8 +35,8 @@ min_hits =1  # no. of consecutive matches needed to establish a track
 
 tracker_list =[] # list for trackers
 # list for track ID
-track_id_list= deque(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'])
-
+track_id_list= deque([1,2,3,4,5,6,7,8,9,10])
+add_to_queue = 11
 # debug = false means run on the video
 debug = False
 
@@ -100,6 +100,7 @@ def pipeline(img):
     global min_hits
     global track_id_list
     global debug
+    global add_to_queue
     
     frame_count+=1
     
@@ -111,7 +112,7 @@ def pipeline(img):
     x_box =[]
     if debug: 
         for i in range(len(z_box)):
-           img1= helpers.draw_box_label(img, z_box[i], box_color=(255, 0, 0))
+           img1= helpers.draw_box_label(img, z_box[i], track_id_list[0], box_color=(255, 0, 0))
            plt.imshow(img1)
         plt.show()
     
@@ -182,13 +183,14 @@ def pipeline(img):
              if debug:
                  print('updated box: ', x_cv2)
                  print()
-             img= helpers.draw_box_label(img, x_cv2) # Draw the bounding boxes on the 
-                                             # images
+             img= helpers.draw_box_label(img, x_cv2, trk.id) # Draw the bounding boxes on the images
     # Book keeping
-    deleted_tracks = filter(lambda x: x.no_losses >max_age, tracker_list)  
+    #deleted_tracks = filter(lambda x: x.no_losses >max_age, tracker_list)  
     
-    for trk in deleted_tracks:
-            track_id_list.append(trk.id)
+    #for trk in deleted_tracks:
+    while len(track_id_list) < 10:
+            track_id_list.append(add_to_queue)
+            add_to_queue += 1
     
     tracker_list = [x for x in tracker_list if x.no_losses<=max_age]
     
