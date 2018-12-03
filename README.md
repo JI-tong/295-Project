@@ -57,17 +57,18 @@ TODO
 1. convert model, go to keras-retinanet bin folder, do:
         python3 convert_model.py trained_model.h5 converted_model.h5
 
-2. evaluate, :
+2. evaluate, do:
         python3 evaluate.py csv test_image.csv class_map.csv converted_model.h5  --save-path=path/to/save/images
 
 ```
 
 ### d. tracking:
 
-#### running, just do:  
+#### for tracking, just do:  
 ```
 python main.py video.mp4
 ```
+#### explaination: 
 #### basic tensorflow object detection API:
 ```
 codes are all in the trackingOnTensorflowModel.
