@@ -3,7 +3,7 @@
 
 ## Team member:  Ji Tong, Yishi Chen, Zening Deng.
 
-### Tried 2 models:
+### Tried 2 methods:
         * Tensorflow Object Detection API
         * Keras Retinanet
 
