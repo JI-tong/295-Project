@@ -57,7 +57,7 @@ TODO
 1. convert model, go to keras-retinanet bin folder, do:
         python3 convert_model.py trained_model.h5 converted_model.h5
 
-2. evaluate, do:
+2. evaluate, go to keras-retinanet folder, find and do:
         python3 evaluate.py csv test_image.csv class_map.csv converted_model.h5  --save-path=path/to/save/images
 
 ```
