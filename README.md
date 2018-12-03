@@ -28,7 +28,7 @@
 1. download the ssd_mobilenet config file and made necessary changes (class numbers, types, data directory, etc).
 
 2. go to tensorflow object detection api folder and do: 
-        python train.py \
+        python3 train.py \
         --logtostderr   \
         --train_dir=output_directory  \
         --pipeline_config_path=path/to/config/file
@@ -66,7 +66,7 @@ TODO
 
 #### for tracking, just do:  
 ```
-python main.py video.mp4
+python3 main.py video.mp4
 ```
 #### explaination: 
 #### basic tensorflow object detection API:
