@@ -4,47 +4,90 @@
 ## Team member:  Ji Tong, Yishi Chen, Zening Deng.
 
 ### Tried 2 models:
-        * basic tensorflow object detection API
-        * retina net
+        * Tensorflow Object Detection API
+        * Keras Retinanet
+
+## Steps:
+
+### a. preprocessing data
+```
+1. find get dataset: DATRAC dataset and SJSU street camera dataset.
+
+2. labeling the dataset images, generate xml file.
+
+3. transfer xml to csv.
+
+4. (Tensorflow object detection API only) : generate TFrecords.
+```
+
+### b. training:
 
 #### basic tensorflow object detection API:
-first go to mymodels directory, run below code to generate the tfrecords:
-```
-python generate_tfrecord.py --csv_input=images/train_labels.csv --image_dir=images/train --output_path=train.record
-
-python generate_tfrecord.py --csv_input=images/test_labels.csv  --image_dir=images/test --output_path=test.record
-```
-then:
-1) suppose '~/Path' is the path to access the tensorflow obejct detection API, do:
-```
-export PYTHONPATH=$PYTHONPATH: ~/Path/models/research: ~/Path/models/research/slim
-```
-
-2) do:
-```
-python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
-```
-3) do:
-export an object detection model for inference.
-```
-python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_inception_v2_pets.config --trained_checkpoint_prefix training/model.ckpt-1228 --output_directory inference_graph
 
 ```
-4) do:
-```
-./Object_detection_xxxx.py based on the test set format
+1. download the ssd_mobilenet config file and made necessary changes (class numbers, types, data directory, etc).
+
+2. go to tensorflow object detection api folder and do: 
+        python train.py \
+        --logtostderr   \
+        --train_dir=output_directory  \
+        --pipeline_config_path=path/to/config/file
 ```
 
-#### retina net:
-
-1) run:
-```
-class_map_to_csv.py && xml_to_csv.py
-```
-
-2) go to the retina net directory, do:
+#### keras retinanet:
 
 ```
-./keras_retinanet/bin/train.py csv path/to/the/csv/file/train_labels.csv path/to/the/csv/file/class_map.csv 
+1. create a class_map.csv file for class and its labels (e.g. car,1 ; van, 2)
+
+2. go to keras retinanet do: 
+        ./keras_retinanet/bin/train.py csv training_image.csv class_map.csv
 ```
 
+### c. test and evaluation:
+
+#### basic tensorflow object detection API:
+
+```
+TODO
+```
+
+#### keras retinanet:
+
+```
+1. convert model, go to keras-retinanet bin folder, do:
+        python3 convert_model.py trained_model.h5 converted_model.h5
+
+2. evaluate, :
+        python3 evaluate.py csv test_image.csv class_map.csv converted_model.h5  --save-path=path/to/save/images
+
+```
+
+### d. tracking:
+
+#### running, just do:  
+```
+python main.py video.mp4
+```
+#### basic tensorflow object detection API:
+```
+codes are all in the trackingOnTensorflowModel.
+
+based on github https://github.com/srianant/kalman_filter_multi_object_tracking and made some modification
+
+1. rewrite the predicted class type.
+
+2. add cars id functionality, give each cars a id, so we can know during a specific time period, how many cars has passed the cross road, and use the coordinate changes associated with each id, to predict the speed of the car
+```
+#### Keras retinanet:
+```
+codes are all in the trackingOnKerasModel.
+
+similar to the previous one, but rewrite the whole detector.py, since both model has different format.
+Keras is using h5 format, however tensorflow is using pb format.
+
+```
+### e. anticipate crashing:
+
+```
+TODO
+```
