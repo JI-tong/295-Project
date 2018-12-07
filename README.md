@@ -48,7 +48,17 @@
 #### basic tensorflow object detection API:
 
 ```
-TODO
+1.modify config file 
+
+2.go to tensorflow object detection api folder and do:
+       python3 eval.py \
+       --logtostderr \
+       --pipeline_config_path=path/to/config/file
+       --checkpoint_dir=path/to/checkpoint
+       --eval_dir=path/to/save/eval
+       
+3.visualize evaluation:
+       tensorboard --logdir=path/to/save/eval
 ```
 
 #### keras retinanet:
@@ -90,5 +100,11 @@ Keras is using h5 format, however tensorflow is using pb format.
 ### e. anticipate crashing:
 
 ```
-TODO
+codes are all in anticipation folder
+```
+#### for anticipating, just do:
+
+```
+go to anticipating folder, do:
+       python3 anticipating.py --model path/to/model
 ```
