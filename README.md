@@ -105,6 +105,6 @@ codes are all in anticipation folder
 #### for anticipating, just do:
 
 ```
-go to anticipating folder, do:
+go to anticipation folder, do:
        python3 anticipating.py --model path/to/model
 ```
